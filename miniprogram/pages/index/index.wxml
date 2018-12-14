@@ -1,0 +1,57 @@
+<view class="sign-page">
+  <!-- 有打卡任务 -->
+  <swiper class="swiper" indicator-dots="{{tasks.length>1}}" current="{{index}}" bindchange="changeSwiper" wx:if="{{tasks.length>0}}">
+    <block wx:for="{{tasks}}" wx:key="unique">
+      <swiper-item>
+        <!-- module a -->
+        <view class="module-a">
+          <view class="tasktype">
+            <text>{{item.type=='day'?'日卡':item.type=='week'?'周卡':'月卡'}}</text>
+          </view>
+          <view class="module-item" bindtap="viewDetail" data-id="1">
+            <view class="item">
+              <text class="task-name">{{item.name}}</text>
+            </view>
+            <view class="item">
+              <view class="key">{{item.num>0?item.type=='day'?'今天已完成':item.type=='week'?'本周已完成':'本月已完成':'未完成'}}
+                <text class="tasknum">{{item.num>0?item.num:''}}</text>{{item.num>0?'次':''}}
+              </view>
+
+            </view>
+          </view>
+          <view class="point">
+            <text>{{item.point}}积分</text>
+          </view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- module b -->
+  <view class="module-b" wx:if="{{tasks.length>0}}">
+    <!-- 时间 -->
+    <block>
+      <view class="tit">
+        <text>当前时间</text>
+      </view>
+      <view class="time">
+        <text>{{hour<10?'0'+hour:hour}}</text>
+        <text>:</text>
+        <text>{{minute<10?'0'+minute:minute}}</text>
+        <text>:</text>
+        <text>{{second<10?'0'+second:second}}</text>
+      </view>
+      <view class="sign-wrap" bindtap="signTask">
+        <view class="sign-btn">
+          <image src="/images/sign_btn_{{btn}}.png"></image>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 无打卡任务 -->
+  <view class="module-no" wx:if="{{tasks.length<=0}}">
+    <view class="tips">
+      当前无打卡任务，可点击
+      <text bindtap="newTask" class="newTask">新建打卡</text>添加任务！
+    </view>
+  </view>
+</view>

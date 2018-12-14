@@ -1,0 +1,45 @@
+{
+  "cloud": true,
+  "pages": [
+    "pages/index/index",
+    "pages/taskList/taskList",
+    "pages/newTask/newTask",
+    "pages/taskDetail/taskDetail",
+    "pages/mine/mine",
+    "pages/suggest/suggest",
+    "pages/authority/authority",
+    "pages/help/help"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "随手打卡",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#b2b2b2",
+    "selectedColor": "#2fcc85",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "快速打卡",
+        "iconPath": "images/uncomplete.png",
+        "selectedIconPath": "images/complete.png"
+      },
+      {
+        "pagePath": "pages/taskList/taskList",
+        "text": "打卡管理",
+        "iconPath": "images/unmanage.png",
+        "selectedIconPath": "images/manage.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "个人中心",
+        "iconPath": "images/unuser.png",
+        "selectedIconPath": "images/user.png"
+      }
+    ]
+  }
+}

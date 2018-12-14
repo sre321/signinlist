@@ -1,0 +1,34 @@
+<view class="task-page">
+  <!-- 切换菜单 -->
+  <view class="t-menu">
+    <view class="t-menu-btn {{tabIndex==0 ? 'selected' : ''}}" bindtap="changeTab" id="day">
+      <text>日卡</text>
+    </view>
+    <view class="t-menu-btn {{tabIndex==1 ? 'selected' : ''}}" bindtap="changeTab" id="week">
+      <text>周卡</text>
+    </view>
+    <view class="t-menu-btn {{tabIndex==2 ? 'selected' : ''}}" bindtap="changeTab" id="month">
+      <text>月卡</text>
+    </view>
+  </view>
+  <!-- 任务分类 -->
+  <view class="t-inner" wx:if="{{tasks.length>0}}">
+    <view class="t-content-wrap">
+      <view id="day" class="t-content">
+      <block wx:for="{{tasks}}" wx:key="unique">
+        <view class="card" bindtap="viewDetail" data-id="{{item._id}}">
+          <view class="tasktype">{{item.type=='day'?'日卡':item.type=='week'?'周卡':'月卡'}}</view>
+          <view class="taskname">{{item.name}}</view>
+        </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <!-- 无打卡任务 -->
+  <view class="module-no" wx:if="{{tasks.length<=0}}">
+    <view class="tips">
+      当前无打卡任务，可点击
+      <text bindtap="newTask" class="newTask">新建打卡</text>添加任务！
+    </view>
+  </view>
+</view>

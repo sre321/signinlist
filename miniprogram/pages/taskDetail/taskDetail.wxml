@@ -1,0 +1,42 @@
+<view class="sign-page">
+  <view class="module-a">
+    <view class="module-a-l">
+      <view class="tasktitle">
+        <text>{{task.name}}</text>
+      </view>
+      <view class="tasknum">
+        <text>（{{task.type=='day'?'今天':task.type=='week'?'本周':'本月'}}已打卡{{task.num}}次）</text>
+      </view>
+      <view class="item item-detail">
+        <view class="key">积分</view>
+        <view class="value">{{task.point}}</view>
+      </view>
+      <view class="item item-detail">
+        <view class="key">循环周期</view>
+        <view class="value">{{task.type=='day'?'每天':task.type=='week'?'每周':'每月'}}</view>
+      </view>
+      <view class="item item-detail">
+        <view class="key">周期内可重复</view>
+        <view class="value">{{task.repeat?'是':'否'}}</view>
+      </view>
+      <view class="item item-detail">
+        <view class="key">是否启用</view>
+        <view class="value">{{task.isEnable?'是':'否'}}</view>
+      </view>
+      <view class="item item-detail">
+        <view class="key">创建时间</view>
+        <view class="value">{{task.createTime}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="module-a" wx:if="{{task.remark}}">
+    <view class="module-a-l">
+      {{task.remark}}
+    </view>
+  </view>
+  <view class="flex">
+    <button bindtap="switchTask" class="btn" type="{{task.isEnable?'warn':'primary'}}" size="mini">{{task.isEnable?'停用':'启用'}}</button>
+    <button bindtap="changeTask" class="btn" type="primary" size="mini">修改</button>
+    <button bindtap="deleteTask" class="btn" type="warn" size="mini">删除</button>
+  </view>
+</view>

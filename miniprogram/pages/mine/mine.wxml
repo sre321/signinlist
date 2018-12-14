@@ -1,0 +1,75 @@
+<view class="header">
+  <image class="header_back" src="/images/bgimg.png"></image>
+  <view class="header_box">
+    <view class="center">
+      <view class="header_img">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <view class="header_name">
+        <open-data type="userNickName"></open-data>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="list">
+  <view class="list_content">
+    <view class="flex-bet">
+      <view bindtap="wallet" class="flex list_item">
+        <view class="text">{{points.day}}</view>
+        <view>日卡积分</view>
+      </view>
+      <view bindtap="wallet" class="flex list_item">
+        <view class="text">{{points.week}}</view>
+        <view>周卡积分</view>
+      </view>
+      <view bindtap="wallet" class="flex list_item">
+        <view class="text">{{points.month}}</view>
+        <view>月卡积分</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="banner">
+  <view class="bhead">
+    <view>我的打卡</view>
+  </view>
+  <view class="bbody">
+    <view class="banner_list" bindtap="newTask">
+      <image class="list_allimg" src="/images/write.png"></image>
+      <view class="list_alltext">新建打卡</view>
+    </view>
+    <view class="banner_list" bindtap="bigCircle">
+      <image class="list_allimg" src="/images/circle.png"></image>
+      <view class="list_alltext">大转盘</view>
+    </view>
+  </view>
+</view>
+<view class="banner">
+  <view class="bhead">
+    <view>打卡服务</view>
+  </view>
+  <view class="bbody">
+    <view class="banner_list" bindtap="help">
+      <image class="list_allimg" src="/images/help.png"></image>
+      <view class="list_alltext">使用说明</view>
+    </view>
+    <view class="banner_list" bindtap="service">
+      <image class="list_allimg" src="/images/services.png"></image>
+      <view class="list_alltext">联系客服</view>
+    </view>
+    <view class="banner_list" bindtap="suggest">
+      <image class="list_allimg" src="/images/bug.png"></image>
+      <view class="list_alltext">bug及建议</view>
+    </view>
+  </view>
+</view>
+<view class="wechat" wx:if="{{wechat}}">
+    <view bindtap="service" class="absolute"></view>
+    <view class="udlr absolute">
+        <image bindtap="previewImage" class="absolute" mode="aspectFill" src="/images/wechat.jpg"></image>
+        <view class="sele">点击图片预览</view>
+        <view class="queding">
+            <text bindtap="service">确定</text>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,75 @@
+/* pages/taskDetail/taskDetail.wxss */
+
+.sign-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0 26rpx;
+  height: 100%;
+  overflow: hidden;
+}
+
+.module-a {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid #f0f0f0;
+  border-radius: 12rpx;
+  overflow: hidden;
+  background-color: #fff;
+  font-size: 32rpx;
+  margin-top: 30rpx;
+  padding: 0 40rpx 60rpx 40rpx;
+}
+
+.module-a-l {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 30rpx;
+  width: 100%;
+}
+
+.module-a-l .item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.module-a-l .item .key {
+  width: 50%;
+}
+
+.module-a-l .item .value {
+  width: 56%;
+  text-align: right;
+}
+
+.module-a-l .item-detail {
+  padding: 30rpx 20rpx 10rpx 20rpx;
+  border-bottom: 2rpx solid #d9d9d9;
+}
+
+.tasktitle {
+  text-align: center;
+  font-size: 130%;
+}
+
+.tasknum {
+  text-align: center;
+}
+
+.btn {
+  height: 72rpx;
+  width: 25%;
+  margin: 100rpx 30rpx 0 30rpx;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+}

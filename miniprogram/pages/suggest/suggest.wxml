@@ -1,0 +1,19 @@
+<!--pages/suggest/suggest.wxml-->
+<view class="add-page">
+  <form bindsubmit="formSubmit">
+    <view class="mod-a">
+      <!-- 标题 -->
+      <view class="mod t-name">
+        <input name="name" class="input" maxlength="100" placeholder="标题" />
+      </view>
+    </view>
+    <!-- 详细描述 -->
+    <view class="mod-a mt20">
+      <textarea name="remark" auto-focus class="area" placeholder="详细描述" />
+    </view>
+    <!-- 提交 -->
+    <view class="create">
+      <button class="btn" formType="submit">提交</button>
+    </view>
+  </form>
+</view>

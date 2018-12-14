@@ -1,0 +1,57 @@
+<!-- 新建任务 -->
+<view class="add-page">
+  <form bindsubmit="formSubmit">
+    <view class="mod-a">
+      <!-- 任务名称 -->
+      <view class="mod t-name">
+        <input name="name" class="input" maxlength="100" placeholder="请输入打卡名称" value="{{task.name}}" />
+      </view>
+    </view>
+    <view class="mt20">
+      <!-- 积分 -->
+      <view class="mod t-name">
+        积分：
+        <button bindtap="pointDown" size="mini">-</button>
+        <input bindinput="pointInput" name="point" type="number" maxlength="100" class="point" value="{{point}}" />
+        <button bindtap="pointUp" size="mini">+</button>
+      </view>
+    </view>
+    <view class="mt20">
+      <!-- 周期 -->
+      <view class="mod t-name">
+        循环周期：
+        <radio-group name="type">
+          <label wx:for="{{typeItems}}" wx:key="unique">
+            <radio value="{{item.value}}" checked="{{task.type==item.value?'true':item.checked}}" />{{item.name}}
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="mt20">
+      <!-- 周期内可重复 -->
+      <view class="mod t-name">
+        周期内可重复：
+        <view>
+          <switch name="repeat" checked="{{task?task.repeat?'true':'':''}}" />
+        </view>
+      </view>
+    </view>
+    <view class="mt20">
+      <!-- 是否启用 -->
+      <view class="mod t-name">
+        是否启用：
+        <view>
+          <switch name="isEnable" checked="{{task?task.isEnable?'true':'':'true'}}" />
+        </view>
+      </view>
+    </view>
+    <!-- 备注 -->
+    <view class="mod-a mt20">
+      <textarea name="remark" auto-focus class="area" placeholder="备注" value="{{task.remark}}" />
+    </view>
+    <!-- 创建按钮 -->
+    <view class="create">
+      <button class="btn" formType="submit">{{btnName}}</button>
+    </view>
+  </form>
+</view>
