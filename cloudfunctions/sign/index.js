@@ -48,7 +48,8 @@ exports.main = async (event, context) => {
       } else {
         await db.collection('tasks').doc(event.taskId).update({
           data: {
-            okNum: com.inc(-1)
+            okNum: com.inc(-1),
+            isComplete: false
           }
         })
         return {

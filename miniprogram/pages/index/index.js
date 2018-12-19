@@ -45,6 +45,7 @@ Page({
   getTask: function () {
     let _page = this
     let openId = wx.getStorageSync('openId')
+
     if (!openId)
       app.getOpenId()
     openId = wx.getStorageSync('openId')
@@ -115,7 +116,6 @@ Page({
           point: parseInt(_page.data.currentTask.point)
         },
         success: function (res) {
-          console.log(res.result)
           if (res.result.code) {
             wx.showToast({
               title: '打卡成功',

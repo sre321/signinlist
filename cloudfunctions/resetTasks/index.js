@@ -9,7 +9,8 @@ exports.main = async (event, context) => {
   try {
     await db.collection('tasks').update({
       data: {
-        isComplete: false
+        isComplete: false,
+        okNum:0
       },
     })
   }
