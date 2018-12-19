@@ -1,7 +1,7 @@
 <!--pages/help/help.wxml-->
 <view class="help">
   <view class="helptxt">
-    <text>1、个人中心记录的是所有日卡总积分，所有周卡总积分，所有月卡总积分。\n</text>
+    <text>1、个人中心记录的是所有日卡总积分，所有周卡总积分。\n</text>
     <text>2、所有积分在每个月的月底都会清零。\n</text>
   </view>
 </view>

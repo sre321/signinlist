@@ -12,18 +12,18 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.getTasks('day')
   },
-  changeTab: function (e) {
+  changeTab: function(e) {
     var id = e.currentTarget.id;
-    let tabIndex = id == 'day' ? 0 : id == 'week' ? 1 : 2
+    let tabIndex = id == 'day' ? 0 : 1
     this.setData({
       tabIndex: tabIndex
     })
     this.getTasks(id)
   },
-  getTasks: function (type) {
+  getTasks: function(type) {
     let _page = this
     let openId = wx.getStorageSync('openId')
     if (!openId)
@@ -34,7 +34,7 @@ Page({
       _openid: openId,
       type: type
     }).get({
-      success: function (res) {
+      success: function(res) {
         if (res.data.length > 0)
           _page.setData({
             tasks: res.data
@@ -47,12 +47,12 @@ Page({
       }
     })
   },
-  newTask: function () {
+  newTask: function() {
     wx.navigateTo({
       url: '../newTask/newTask'
     })
   },
-  viewDetail: function (e) {
+  viewDetail: function(e) {
     wx.navigateTo({
       url: '../taskDetail/taskDetail?taskId=' + e.currentTarget.dataset.id
     })
@@ -60,14 +60,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     this.getTasks('day')
     this.setData({
       tabIndex: 0
@@ -77,21 +77,21 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     wx.showNavigationBarLoading()
     this.getTasks('day')
     this.setData({
@@ -104,14 +104,14 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

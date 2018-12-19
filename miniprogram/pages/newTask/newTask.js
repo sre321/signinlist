@@ -54,7 +54,8 @@ Page({
       })
     } else {
       formData.createTime = new Date()
-      formData.num = 0
+      formData.okNum = 0
+      formData.isComplete=false
       db.collection('tasks').add({
         data: formData,
         success: function (res) {

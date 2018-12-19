@@ -34,15 +34,6 @@ exports.main = async (event, context) => {
               },
             })
           break
-        case 'month':
-          result = await db.collection('points').where({
-            _openid: event.userInfo.openId
-          })
-            .update({
-              data: {
-                month: com.inc(event.point)
-              },
-            })
         default:
           break
       }

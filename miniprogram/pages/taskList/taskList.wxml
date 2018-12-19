@@ -7,9 +7,6 @@
     <view class="t-menu-btn {{tabIndex==1 ? 'selected' : ''}}" bindtap="changeTab" id="week">
       <text>周卡</text>
     </view>
-    <view class="t-menu-btn {{tabIndex==2 ? 'selected' : ''}}" bindtap="changeTab" id="month">
-      <text>月卡</text>
-    </view>
   </view>
   <!-- 任务分类 -->
   <view class="t-inner" wx:if="{{tasks.length>0}}">
@@ -17,7 +14,7 @@
       <view id="day" class="t-content">
       <block wx:for="{{tasks}}" wx:key="unique">
         <view class="card" bindtap="viewDetail" data-id="{{item._id}}">
-          <view class="tasktype">{{item.type=='day'?'日卡':item.type=='week'?'周卡':'月卡'}}</view>
+          <view class="tasktype">{{item.type=='day'?'日卡':'周卡'}}</view>
           <view class="taskname">{{item.name}}</view>
         </view>
         </block>

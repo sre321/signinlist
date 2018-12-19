@@ -6,7 +6,7 @@ Page({
   data: {
     tasks: [],
     currentTask: {},
-    index:0,
+    index: 0,
     btn: 0, // 打卡按钮状态 0:未按压 1：按压 2：完成
     btnPress: false
   },
@@ -55,18 +55,19 @@ Page({
     }, {
       _openid: com.eq(openId),
       repeat: com.eq(false),
-      num: com.eq(0),
+      isComplete: com.eq(false),
       isEnable: com.eq(true)
     }])).get({
       success: function (res) {
-        if (res.data.length > 0){
+        console.log(res.data)
+        if (res.data.length > 0) {
           _page.setData({
             tasks: res.data,
             currentTask: res.data[0],
-            index:0
+            index: 0
           })
         }
-         
+
       }
     })
   },

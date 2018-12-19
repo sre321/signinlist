@@ -62,7 +62,7 @@
 }
 
 .btn {
-  height: 72rpx;
+  height: 62rpx;
   width: 25%;
   margin: 100rpx 30rpx 0 30rpx;
 }

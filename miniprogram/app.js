@@ -23,6 +23,25 @@ App({
       }
     }, 1000 * 3600)
   },
+  updateTaskState:function(){
+    setInterval(function () {
+      const time = new Date()
+      const hour = time.getHours()
+      if(hour==1)
+      {
+        const db = wx.cloud.database()
+        db.collection('tasks').where({
+          done: false
+        }).update({
+          data: {
+            progress: _.inc(10)
+          },
+          success: console.log,
+          fail: console.error
+        })
+      }
+    }, 1000*60*60)
+  },
   getOpenId: function () {
     wx.cloud.callFunction({
       name: 'login',
