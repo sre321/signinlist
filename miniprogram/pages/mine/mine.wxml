@@ -22,10 +22,6 @@
         <view class="text">{{points.week}}</view>
         <view>周卡积分</view>
       </view>
-      <view bindtap="wallet" class="flex list_item">
-        <view class="text">{{points.month}}</view>
-        <view>月卡积分</view>
-      </view>
     </view>
   </view>
 </view>

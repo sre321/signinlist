@@ -17,11 +17,7 @@ Page({
     {
       name: '每周',
       value: 'week'
-    },
-    {
-      name: '每月',
-      value: 'month'
-    },
+    }
     ]
   },
   formSubmit: function (e) {

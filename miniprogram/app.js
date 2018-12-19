@@ -37,7 +37,7 @@ App({
               console.log(res.data)
               if (res.data.length == 0) {
                 db.collection('points').add({
-                  data: { day: 0, week: 0, month: 0 }
+                  data: { day: 0, week: 0}
                 })
               }
             }
