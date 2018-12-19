@@ -23,7 +23,7 @@ Page({
   formSubmit: function (e) {
     let formData = e.detail.value
     let msg = ''
-    if (formData.name == '' ? msg = '打卡名称不能为空' : formData.point == '' ? msg = '积分不能为空' : msg != '') {
+    if (formData.taskName == '' ? msg = '打卡名称不能为空' : formData.point == '' ? msg = '积分不能为空' : msg != '') {
       wx.showModal({
         title: '提示',
         content: msg,

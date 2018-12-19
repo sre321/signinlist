@@ -5,7 +5,7 @@
         <text>{{task.taskName}}</text>
       </view>
       <view class="tasknum">
-        <text>（{{task.type=='day'?'今天':'本周'}}已打卡{{task.oknum}}次）</text>
+        <text>（{{task.type=='day'?'今天':'本周'}}已打卡{{task.okNum}}次）</text>
       </view>
       <view class="item item-detail">
         <view class="key">积分</view>

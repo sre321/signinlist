@@ -4,7 +4,7 @@
     <view class="mod-a">
       <!-- 任务名称 -->
       <view class="mod t-name">
-        <input name="taskName" class="input" maxlength="100" placeholder="请输入打卡名称" value="{{task.name}}" />
+        <input name="taskName" class="input" maxlength="100" placeholder="请输入打卡名称" value="{{task.taskName}}" />
       </view>
     </view>
     <view class="mt20">

@@ -10,7 +10,7 @@ Page({
   formSubmit: function (e) {
     let formData = e.detail.value
     let msg = ''
-    if (formData.name == '' ? msg = '标题不能为空' : msg != '') {
+    if (formData.taskName == '' ? msg = '标题不能为空' : msg != '') {
       wx.showModal({
         title: '提示',
         content: msg,

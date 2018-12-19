@@ -67,6 +67,13 @@ Page({
             index: 0
           })
         }
+        else {
+          _page.setData({
+            tasks: [],
+            currentTask: {},
+            index: 0
+          })
+        }
 
       }
     })
@@ -108,6 +115,7 @@ Page({
           point: parseInt(_page.data.currentTask.point)
         },
         success: function (res) {
+          console.log(res.result)
           if (res.result.code) {
             wx.showToast({
               title: '打卡成功',
@@ -115,53 +123,34 @@ Page({
               duration: 1000
             });
             let newTasks = _page.data.tasks
+            let newCurrentTask = {}
             for (var item in newTasks) {
               if (newTasks[item]._id === _page.data.currentTask._id) {
                 if (newTasks[item].repeat)
-                  newTasks[item].num++
-                else
+                  newTasks[item].okNum++
+                else {
                   newTasks.splice(item, 1)
+                  newCurrentTask = newTasks.length > 0 ? newTasks[0] : {}
+                }
               }
             }
             _page.setData({
               btn: 0,
               btnPress: false,
-              tasks: newTasks
+              tasks: newTasks,
+              currentTask: newCurrentTask
             })
-          }
-          else {
+
+          } else {
             wx.showModal({
               title: '提示',
-              content: '操作失败' + res.result.msg,
+              content: '操作失败！' + res.result.msg,
               showCancel: false
             })
           }
         },
         fail: console.error
       })
-      // db.collection('tasks').doc(_page.data.currentTask._id).update({
-      //   data: {
-      //     num: com.inc(1)
-      //   },
-      //   success: function (res) {
-      //     wx.showToast({
-      //       title: '打卡成功',
-      //       icon: 'success',
-      //       duration: 1000
-      //     });
-      //     let newTasks = _page.data.tasks
-      //     for (var item in newTasks) {
-      //       if (newTasks[item]._id === _page.data.currentTask._id) {
-      //         newTasks[item].num++
-      //       }
-      //     }
-      //     _page.setData({
-      //       btn: 0,
-      //       btnPress: false,
-      //       tasks: newTasks
-      //     })
-      //   }
-      // })
     }
   },
   // 上传图片

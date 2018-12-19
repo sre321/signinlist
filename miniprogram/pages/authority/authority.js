@@ -26,7 +26,7 @@ Page({
     let _page = this;
     if (e.detail.userInfo) {
       const db = wx.cloud.database()
-      db.collection('userinfo').add({
+      db.collection('userInfo').add({
         data: e.detail.userInfo,
         success: function (res) {
           if (res._id) {
@@ -36,11 +36,6 @@ Page({
             setTimeout(function () {
               wx.switchTab({
                 url: '../mine/mine',
-                success: function (e) {
-                  var page = getCurrentPages().pop();
-                  if (page == undefined || page == null) return;
-                  page.onLoad();
-                }
               })
             }, 1500)
           }

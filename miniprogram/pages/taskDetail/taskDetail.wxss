@@ -39,11 +39,11 @@
 }
 
 .module-a-l .item .key {
-  width: 50%;
+  width: 40%;
 }
 
 .module-a-l .item .value {
-  width: 56%;
+  width: 60%;
   text-align: right;
 }
 

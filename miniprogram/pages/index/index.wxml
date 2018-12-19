@@ -13,8 +13,8 @@
               <text class="task-name">{{item.taskName}}</text>
             </view>
             <view class="item">
-              <view class="key">{{item.oknum>0?item.type=='day'?'今天已完成':'本周已完成':''}}
-                <text class="tasknum">{{item.oknum>0?item.oknum:''}}</text>{{item.oknum>0?'次':''}}
+              <view class="key">{{item.okNum>0?item.type=='day'?'今天已完成':'本周已完成':'未完成'}}
+                <text class="tasknum">{{item.okNum>0?item.okNum:''}}</text>{{item.okNum>0?'次':''}}
               </view>
             </view>
           </view>

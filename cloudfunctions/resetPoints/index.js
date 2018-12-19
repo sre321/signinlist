@@ -1,17 +1,21 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
-cloud.init()
+cloud.init({
+  env: 'signinlist'
+})
 const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
-  await db.collection('points').where({
-    _openid: event.userInfo.openId
-  })
-    .update({
+  try {
+    const { stats }= await db.collection('points').update({
       data: {
         day: 0,
-        week: 0,
-        month: 0
+        week: 0
       },
     })
+    if()
+  }
+  catch{
+    console.error
+  }
 }

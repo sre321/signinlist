@@ -5,15 +5,17 @@ App({
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
       wx.cloud.init({
+        env:'signinlist',
         traceUser: true,
       })
     }
     this.getOpenId()
-    //每月一号积分清零
-    let openId = wx.getStorageSync('openId')
+    
     this.interval = setInterval(function () {
       const time = new Date()
       const day = time.getDate()
+      const hour = time.getHours()
+      //每月一号积分清零并放入积分历史表
       if (day == 1) {
         wx.cloud.callFunction({
           // 云函数名称
@@ -21,26 +23,15 @@ App({
           fail: console.error
         })
       }
-    }, 1000 * 3600)
-  },
-  updateTaskState:function(){
-    setInterval(function () {
-      const time = new Date()
-      const hour = time.getHours()
-      if(hour==1)
-      {
-        const db = wx.cloud.database()
-        db.collection('tasks').where({
-          done: false
-        }).update({
-          data: {
-            progress: _.inc(10)
-          },
-          success: console.log,
+      //每日一点重置任务完成状态
+      if (hour==1){
+        wx.cloud.callFunction({
+          // 云函数名称
+          name: 'resetTasks',
           fail: console.error
         })
       }
-    }, 1000*60*60)
+    }, 1000 * 3600)
   },
   getOpenId: function () {
     wx.cloud.callFunction({

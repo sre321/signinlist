@@ -1,14 +1,17 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
-cloud.init()
+cloud.init({
+  env: 'signinlist'
+})
 const db = cloud.database()
 const com = db.command
 // 云函数入口函数
 exports.main = async (event, context) => {
   try {
-    let { stats } = await db.collection('tasks').doc(event.taskId).update({
+    const { stats } = await db.collection('tasks').doc(event.taskId).update({
       data: {
-        num: com.inc(1)
+        okNum: com.inc(1),
+        isComplete:true
       }
     })
     if (stats.updated) {
@@ -39,13 +42,13 @@ exports.main = async (event, context) => {
       }
       if (result.stats.updated) {
         return {
-          code: 1
+          code: 1,
+          msg:'update success'
         }
-      }
-      else {
+      } else {
         await db.collection('tasks').doc(event.taskId).update({
           data: {
-            num: com.inc(-1)
+            okNum: com.inc(-1)
           }
         })
         return {
@@ -56,9 +59,12 @@ exports.main = async (event, context) => {
     }
     return {
       code: 0,
-      msg: 'update tasks failed'
+      msg: 'update tasks failed,更新' + stats.updated + '条数据'
     }
   } catch (e) {
-    return e
+    return {
+      code: 0,
+      msg: '系统错误！！！'
+    }
   }
 }
