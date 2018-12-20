@@ -1,7 +1,7 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
 cloud.init({
-  env: 'signinlist'
+  env: 'singinlist'
 })
 const db = cloud.database()
 const com = db.command
@@ -16,7 +16,7 @@ exports.main = async (event, context) => {
     })
     if (stats.updated) {
       let result = ''
-      switch (event.type) {
+      switch (event.cycle) {
         case 'day':
           result = await db.collection('points').where({
             _openid: event.userInfo.openId

@@ -9,7 +9,7 @@
     </view>
     <!-- 详细描述 -->
     <view class="mod-a mt20">
-      <textarea name="description" auto-focus class="area" placeholder="详细描述" />
+      <textarea name="description" show-confirm-bar="false" class="area" placeholder="详细描述" />
     </view>
     <!-- 提交 -->
     <view class="create">

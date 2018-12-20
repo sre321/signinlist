@@ -9,7 +9,10 @@ Page({
     btnName: '创建',
     taskId: '',
     point: 0,
-    typeItems: [{
+    duration: 0,
+    overTime: 0,
+    showDuration: 0,
+    cycleItems: [{
       name: '每天',
       value: 'day',
       checked: 'true'
@@ -18,12 +21,23 @@ Page({
       name: '每周',
       value: 'week'
     }
+    ],
+    typeItems: [{
+      name: '即时',
+      value: 'once',
+      checked: 'true'
+    },
+    {
+      name: '时长',
+      value: 'time'
+    }
     ]
   },
   formSubmit: function (e) {
+    const _page=this
     let formData = e.detail.value
     let msg = ''
-    if (formData.taskName == '' ? msg = '打卡名称不能为空' : formData.point == '' ? msg = '积分不能为空' : msg != '') {
+    if (formData.taskName == '' ? msg = '打卡名称不能为空' : formData.point == '' ? msg = '积分不能为空' : formData.type == 'time' && parseInt(formData.duration) <= 0 ? msg = '类别为时长时，时长必须大于零！' : msg != '') {
       wx.showModal({
         title: '提示',
         content: msg,
@@ -31,8 +45,8 @@ Page({
       })
       return
     }
-    if (this.data.taskId) {
-      db.collection('tasks').doc(this.data.taskId).update({
+    if (_page.data.taskId) {
+      db.collection('tasks').doc(_page.data.taskId).update({
         data: formData,
         success: function (res) {
           if (res.stats.updated) {
@@ -55,7 +69,7 @@ Page({
     } else {
       formData.createTime = new Date()
       formData.okNum = 0
-      formData.isComplete=false
+      formData.isComplete = false
       db.collection('tasks').add({
         data: formData,
         success: function (res) {
@@ -82,7 +96,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let _page = this
+    const _page = this
     if (options.taskId) {
       db.collection('tasks').doc(options.taskId).get({
         success: function (res) {
@@ -90,7 +104,10 @@ Page({
             task: res.data,
             btnName: '保存修改',
             taskId: options.taskId,
-            point: res.data.point
+            point: res.data.point,
+            duration: res.data.duration ? res.data.duration:0,
+            overTime: res.data.overTime ? res.data.overTime:0,
+            showDuration:res.data.type=='time'?1:0
           })
         }
       })
@@ -99,23 +116,68 @@ Page({
       })
     }
   },
-  pointUp: function () {
-    let point = ++this.data.point
-    this.setData({
-      point: point
-    })
+  numUp: function (e) {
+    const numId = e.currentTarget.dataset.id
+    if (numId == 'point') {
+      let point = ++this.data.point
+      this.setData({
+        point: point
+      })
+    } else {
+      let duration = ++this.data.duration
+      this.setData({
+        duration: duration
+      })
+    }
   },
-  pointDown: function () {
-    let point = --this.data.point
-    this.setData({
-      point: point
-    })
+  numDown: function (e) {
+    const numId = e.currentTarget.dataset.id
+    if (numId == 'point') {
+      let point = --this.data.point
+      this.setData({
+        point: point
+      })
+    } else {
+      if (this.data.duration <= 0) {
+        wx.showModal({
+          title: '提示',
+          content: '时长不能小于零！',
+          showCancel: false
+        })
+        return
+      }
+      let duration = --this.data.duration
+      this.setData({
+        duration: duration
+      })
+    }
   },
-  pointInput: function (e) {
-    let point = e.detail.value
-    point = point?parseInt(point):0
+  numInput: function (e) {
+    let numValue = e.detail.value
+    numValue = numValue ? parseInt(numValue) : 0
+    const numId = e.currentTarget.dataset.id
+    if (numId == 'point') {
+      this.setData({
+        point: numValue
+      })
+      return
+    }
+    if (numId == 'duration') {
+      this.setData({
+        duration: numValue
+      })
+      return
+    }
+    if (numId == 'overTime') {
+      this.setData({
+        overTime: numValue
+      })
+      return
+    }
+  },
+  typeChange: function (e) {
     this.setData({
-      point: point
+      showDuration: !this.data.showDuration
     })
   },
   /**

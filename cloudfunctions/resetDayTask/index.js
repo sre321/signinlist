@@ -8,7 +8,7 @@ const db = cloud.database()
 exports.main = async(event, context) => {
   try {
     await db.collection('tasks').where({
-      type: 'day'
+      cycle: 'day'
     }).update({
       data: {
         isComplete: false,

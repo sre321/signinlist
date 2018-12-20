@@ -3,13 +3,13 @@
 .add-page {
   display: flex;
   flex-direction: column;
-  font-size: 36rpx;
+  font-size: 30rpx;
   color: #676767;
   padding: 30rpx 26rpx;
 }
 
 .mod-a {
-  padding: 0 20rpx;
+  padding: 1 20rpx;
   border: 1px solid #f0f0f0;
   background-color: #fff;
   border-radius: 12rpx;
@@ -20,24 +20,23 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 100rpx;
+  height: 90rpx;
   padding: 0 30rpx;
 }
 
 .t-name .input {
-  width: 500rpx;
+  width: 100%;
   overflow: hidden;
   color: #b2b2b2;
-  height: 44rpx;
-  font-size: 36rpx;
+  font-size: 30rpx;
 }
 
-.mt20 {
-  margin-top: 20rpx;
+.mt5 {
+  margin-top: 5rpx;
 }
 
 .create {
-  margin-top: 80rpx;
+  margin-top: 60rpx;
   padding: 0 26rpx;
 }
 
@@ -58,15 +57,15 @@
 }
 
 .area {
-  padding: 30rpx;
-  font-size: 36rpx;
-  height: 220rpx;
+  padding: 20rpx;
+  font-size: 30rpx;
+  height: 160rpx;
 }
 
 .point {
   width: 130rpx;
   background-color: #fff;
-  padding: 10rpx 20rpx;
+  padding: 4rpx 20rpx;
   border-radius: 12rpx;
   text-align: center;
 }

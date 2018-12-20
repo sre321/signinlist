@@ -31,7 +31,7 @@
   border-bottom: 1px solid #2fcc85;
 }
 
-.tasktype {
+.taskcycle {
   display: flex;
   flex-direction: column;
   justify-content: center;

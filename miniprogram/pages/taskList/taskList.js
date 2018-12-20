@@ -23,7 +23,7 @@ Page({
     })
     this.getTasks(id)
   },
-  getTasks: function(type) {
+  getTasks: function (cycle) {
     let _page = this
     let openId = wx.getStorageSync('openId')
     if (!openId)
@@ -32,7 +32,7 @@ Page({
     const db = wx.cloud.database()
     db.collection('tasks').where({
       _openid: openId,
-      type: type
+      cycle: cycle
     }).get({
       success: function(res) {
         if (res.data.length > 0)

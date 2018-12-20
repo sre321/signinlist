@@ -7,27 +7,54 @@
         <input name="taskName" class="input" maxlength="100" placeholder="请输入打卡名称" value="{{task.taskName}}" />
       </view>
     </view>
-    <view class="mt20">
+    <view class="mt5">
       <!-- 积分 -->
       <view class="mod t-name">
         积分：
-        <button bindtap="pointDown" size="mini">-</button>
-        <input bindinput="pointInput" name="point" type="number" maxlength="100" class="point" value="{{point}}" />
-        <button bindtap="pointUp" size="mini">+</button>
+        <button bindtap="numDown" data-id="point" size="mini">-</button>
+        <input bindinput="numInput" data-id="point" name="point" type="number" maxlength="10" class="point" value="{{point}}" />
+        <button bindtap="numUp" data-id="point" size="mini">+</button>
       </view>
     </view>
-    <view class="mt20">
+    <view class="mt5">
       <!-- 周期 -->
       <view class="mod t-name">
         循环周期：
-        <radio-group name="type">
+        <radio-group name="cycle">
+          <label wx:for="{{cycleItems}}" wx:key="unique">
+            <radio value="{{item.value}}" checked="{{task.cycle==item.value?'true':item.checked}}" />{{item.name}}
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="mt5">
+      <!-- 类别 -->
+      <view class="mod t-name">
+        类别：
+        <radio-group bindchange="typeChange" name="type">
           <label wx:for="{{typeItems}}" wx:key="unique">
             <radio value="{{item.value}}" checked="{{task.type==item.value?'true':item.checked}}" />{{item.name}}
           </label>
         </radio-group>
       </view>
     </view>
-    <view class="mt20">
+    <view class="mt5" wx:if="{{showDuration}}">
+      <!-- 时长 -->
+      <view class="mod t-name">
+        时长：
+        <button bindtap="numDown" data-id="duration" size="mini">-</button>
+        <input bindinput="numInput" data-id="duration" name="duration" type="number" maxlength="10" class="point" value="{{duration}}" />
+        <button bindtap="numUp" data-id="duration" size="mini">+</button>（分钟)
+      </view>
+    </view>
+    <view class="mt5" wx:if="{{showDuration}}">
+      <!-- 超时 -->
+      <view class="mod t-name">
+        超时： 每超过
+        <input bindinput="numInput" data-id="overTime" name="overTime" type="number" maxlength="10" class="point" value="{{overTime}}" /> 分钟奖励1积分
+      </view>
+    </view>
+    <view class="mt5">
       <!-- 周期内可重复 -->
       <view class="mod t-name">
         周期内可重复：
@@ -36,7 +63,7 @@
         </view>
       </view>
     </view>
-    <view class="mt20">
+    <view class="mt5">
       <!-- 是否启用 -->
       <view class="mod t-name">
         是否启用：
@@ -46,8 +73,8 @@
       </view>
     </view>
     <!-- 备注 -->
-    <view class="mod-a mt20">
-      <textarea name="remark" auto-focus class="area" placeholder="备注" value="{{task.remark}}" />
+    <view class="mod-a mt5">
+      <textarea name="remark" show-confirm-bar="false" class="area" placeholder="备注" value="{{task.remark}}" />
     </view>
     <!-- 创建按钮 -->
     <view class="create">

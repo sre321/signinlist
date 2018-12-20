@@ -5,15 +5,15 @@
       <swiper-item>
         <!-- module a -->
         <view class="module-a">
-          <view class="tasktype">
-            <text>{{item.type=='day'?'日卡':'周卡'}}</text>
+          <view class="taskcycle">
+            <text>{{item.cycle=='day'?'日卡':'周卡'}}</text>
           </view>
           <view class="module-item" bindtap="viewDetail" data-id="1">
             <view class="item">
               <text class="task-name">{{item.taskName}}</text>
             </view>
             <view class="item">
-              <view class="key">{{item.okNum>0?item.type=='day'?'今天已完成':'本周已完成':'未完成'}}
+              <view class="key">{{item.okNum>0?item.cycle=='day'?'今天已完成':'本周已完成':'未完成'}}
                 <text class="tasknum">{{item.okNum>0?item.okNum:''}}</text>{{item.okNum>0?'次':''}}
               </view>
             </view>

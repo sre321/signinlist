@@ -112,7 +112,7 @@ Page({
         // 传给云函数的参数
         data: {
           taskId: _page.data.currentTask._id,
-          type: _page.data.currentTask.type,
+          cycle: _page.data.currentTask.cycle,
           point: parseInt(_page.data.currentTask.point)
         },
         success: function (res) {

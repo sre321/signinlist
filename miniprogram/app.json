@@ -3,8 +3,8 @@
   "pages": [
     "pages/index/index",
     "pages/taskList/taskList",
-    "pages/newTask/newTask",
     "pages/taskDetail/taskDetail",
+    "pages/newTask/newTask",
     "pages/mine/mine",
     "pages/suggest/suggest",
     "pages/authority/authority",
