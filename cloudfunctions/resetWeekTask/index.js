@@ -7,14 +7,15 @@ const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
   try {
-    await db.collection('tasks').update({
+    await db.collection('tasks').where({
+      type: 'week'
+    }).update({
       data: {
         isComplete: false,
-        okNum:0
+        okNum: 0
       },
     })
-  }
-  catch{
+  } catch {
     console.error
   }
 

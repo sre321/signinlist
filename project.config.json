@@ -6,7 +6,9 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"uglifyFileName": true,
+		"autoAudits": true
 	},
 	"appid": "wx8ec6570b294b6cda",
 	"projectname": "SignInList",

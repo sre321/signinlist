@@ -1,0 +1,9 @@
+{
+  "triggers": [
+    {
+      "name": "resetPoints",
+      "type": "timer",
+      "config": "0 0 1 1 * * *"
+    }
+  ]
+}
