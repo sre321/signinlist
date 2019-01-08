@@ -4,60 +4,64 @@
   /* background-image: url(https://7369-signinlist-1258129797.tcb.qcloud.la/backgroud.jpg?sign=34b6629bfae86264c85530b84a73bd79&t=1546687557);
   width: 100%;
   height: 100%; */
-  display: flex;  
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items:center;
+  align-items: center;
 }
 
-.progress_box{
+.progress_box {
   margin-top: 80rpx;
   position: relative;
-  width:220px;
-  height: 220px;  
-/* 这里的宽高是必须大于等于canvas圆环的直径 否则绘制到盒子外面就看不见了
+  width: 220px;
+  height: 220px;
+  /* 这里的宽高是必须大于等于canvas圆环的直径 否则绘制到盒子外面就看不见了
 一开始设置 width:440rpx; height:440rpx; 发现 在360X640分辨率的设备，下绘制的圆环跑盒子外去了
 小程序使用rpx单位适配 ，但是canvas绘制的是px单位的。所以只能用px单位绘制的圆环在盒子内显示 */
-  display: flex;  
+  display: flex;
   align-items: center;
   justify-content: center;
 }
-.progress_bg{
+
+.progress_bg {
   position: absolute;
-    width:220px;
-  height: 220px; 
+  width: 220px;
+  height: 220px;
 }
-.progress_canvas{ 
-  width:220px;
-  height: 220px; 
-} 
-.progress_text{ 
-  position: absolute; 
-  display: flex;  
+
+.progress_canvas {
+  width: 220px;
+  height: 220px;
+}
+
+.progress_text {
+  position: absolute;
+  display: flex;
   align-items: center;
-  justify-content: center
+  justify-content: center;
 }
-.progress_info{   
-  font-size: 36rpx;
+
+.progress_info {
+  font-size: 50rpx;
   padding-left: 16rpx;
-  letter-spacing: 2rpx
-} 
-.progress_dot{
-  width:16rpx;
-  height: 16rpx;  
+  letter-spacing: 2rpx;
+}
+
+.progress_dot {
+  width: 16rpx;
+  height: 16rpx;
   border-radius: 50%;
-  
 }
 
-.process{
-background-color: #2fcc85;
+.process {
+  background-color: #2fcc85;
 }
 
-.stop{
+.stop {
   background-color: red;
 }
 
-.tip{
+.tip {
   margin-top: 50rpx;
   color: #b2b2b2;
 }
@@ -74,7 +78,15 @@ background-color: #2fcc85;
   justify-content: center;
   position: relative;
 }
-.overtime{
+
+.overtime {
   margin-top: 30rpx;
   color: #2fcc85;
+}
+
+.timer {
+  position: absolute;
+  bottom: 60px;
+  color: #2fcc85;
+  font-size: 36rpx;
 }

@@ -11,19 +11,8 @@ Page({
     btnPress: false
   },
   onLoad: function () {
-    let _page = this
     this.getTask()
-    this.interval = setInterval(function () {
-      const time = new Date()
-      const hour = time.getHours()
-      const minute = time.getMinutes()
-      const second = time.getSeconds()
-      _page.setData({
-        hour: hour,
-        minute: minute,
-        second: second
-      })
-    }, 1000)
+    this.setInterval()
     // // 获取用户信息
     // wx.getSetting({
     //   success: res => {
@@ -41,6 +30,20 @@ Page({
     //     }
     //   }
     // })
+  },
+  setInterval: function () {
+    const _page=this
+    this.interval = setInterval(function () {
+      const time = new Date()
+      const hour = time.getHours()
+      const minute = time.getMinutes()
+      const second = time.getSeconds()
+      _page.setData({
+        hour: hour,
+        minute: minute,
+        second: second
+      })
+    }, 1000)
   },
   getTask: function () {
     let _page = this
@@ -105,7 +108,7 @@ Page({
         btn: 1,
         btnPress: true
       })
-      if (_page.data.currentTask.type =='once'){
+      if (_page.data.currentTask.type == 'once') {
         wx.cloud.callFunction({
           // 云函数名称
           name: 'sign',
@@ -126,7 +129,7 @@ Page({
               let newCurrentTask = _page.data.currentTask
               for (var item in newTasks) {
                 if (newTasks[item]._id === _page.data.currentTask._id) {
-                  if (newTasks[item].repeat){
+                  if (newTasks[item].repeat) {
                     newTasks[item].okNum++
                     _page.setData({
                       btn: 0,
@@ -142,7 +145,7 @@ Page({
                       btnPress: false,
                       tasks: newTasks,
                       currentTask: newCurrentTask,
-                      index:0
+                      index: 0
                     })
                   }
                 }
@@ -220,7 +223,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getTask()
+    this.setInterval()
   },
 
   /**

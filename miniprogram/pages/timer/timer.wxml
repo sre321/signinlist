@@ -11,10 +11,13 @@
       <view class="progress_dot {{isProgress?'process':'stop'}}"></view>
       <text class='progress_info'> {{progress_txt}}</text>
     </view>
+    <view class='timer'>
+      <text>{{minute<10?'0'+minute:minute}}:{{second<10?'0'+second:second}}</text>
+    </view>
   </view>
-  <view class="overtime" wx:if="{{progress_txt=='计时完成'}}">已超出{{passTime}}分钟，奖励{{passPoint}}积分</view>
+  <view class="overtime" wx:if="{{progress_txt=='任务完成'}}">已超出{{passTime}}分钟，奖励{{passPoint}}积分</view>
   <view class="flex">
-    <button bindtap="switchTimer" class="btn" type="{{isProgress?'warn':'primary'}}" size="mini">{{isProgress?'暂停':'开始'}}</button>
+    <button bindtap="switchTimer" class="btn" disabled="{{progress_txt=='任务完成'?true:false}}" type="{{isProgress?'warn':'primary'}}" size="mini">{{isProgress?'暂停':'开始'}}</button>
     <button bindtap="stopTimer" class="btn" type="warn" size="mini">结束</button>
   </view>
 </view>

@@ -5,11 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    progress_txt: '计时中...',
+    progress_txt: '任务中...',
     isProgress: 1,
     passTime: 0, //超出时间
     passPoint: 0, //超出积分
     count: 0, // 设置 计数器 初始为0
+    minute: 0,
+    second: 0,
     countTimer: null // 设置 定时器 初始为null
   },
 
@@ -54,19 +56,41 @@ Page({
         所以 计数器 最大值 60 对应 2 做处理，计数器count=60的时候step=2
         */
         _page.drawCircle(_page.data.count / (600 * minute / 2))
-        _page.data.count++;
+        _page.data.count++
+        // let newCount=_page.data.count++
+        const allSecond = parseInt((600 * minute - _page.data.count) / 10)
+        _page.setData({
+          minute: parseInt(allSecond / 60),
+          second: allSecond % 60
+        })
       } else {
         _page.setData({
-          progress_txt: "计时完成"
+          progress_txt: "任务完成"
         });
         clearInterval(_page.countTimer)
+        _page.data.count = 1
         _page.countTimer = setInterval(() => {
-          let newPassTime = ++_page.data.passTime
-          _page.setData({
-            passTime: newPassTime,
-            passPoint: newPassTime / _page.data.currentTask.overTime
-          })
-        }, 60000)
+          _page.data.count++
+          if (_page.data.count % 60 == 0) {
+            _page.setData({
+              minute: parseInt(_page.data.count / 60),
+              second: _page.data.count % 60,
+              passTime: parseInt(_page.data.count / 60),
+              passPoint: parseInt(_page.data.count / 60) / _page.data.currentTask.overTime
+            })
+          }
+          else {
+            _page.setData({
+              minute: parseInt(_page.data.count / 60),
+              second: _page.data.count % 60,
+            })
+          }
+          // let newPassTime = ++_page.data.passTime
+          // _page.setData({
+          //   passTime: newPassTime,
+          //   passPoint: newPassTime / _page.data.currentTask.overTime
+          // })
+        }, 1000)
       }
     }, 100)
   },
@@ -82,7 +106,7 @@ Page({
       _page.countInterval(_page.data.currentTask.duration)
       _page.setData({
         isProgress: 1,
-        progress_txt: '计时中...'
+        progress_txt: '任务中...'
       })
     }
 
@@ -90,20 +114,7 @@ Page({
   stopTimer: function () {
     const _page = this
     const times = 600 * _page.data.currentTask.duration
-    if (_page.data.count <= times) {
-      wx.showModal({
-        title: '确定要结束任务么？',
-        content: '本次任务尚未完成，结束后将离开本页面并且不会保存本次任务进度！',
-        success: function (res) {
-          if (res.confirm) {
-            clearInterval(_page.countTimer)
-            wx.switchTab({
-              url: '../index/index'
-            })
-          }
-        }
-      })
-    } else {
+    if (_page.data.progress_txt == '任务完成') {
       wx.showModal({
         title: '提示',
         content: '任务已完成，共超出' + _page.data.passTime + '分钟，奖励' + _page.data.passPoint + '积分，点击确定完成打卡！',
@@ -145,6 +156,19 @@ Page({
           }
         }
       })
+    } else {
+      wx.showModal({
+        title: '确定要结束任务么？',
+        content: '本次任务尚未完成，结束后将离开本页面并且不会保存本次任务进度！',
+        success: function (res) {
+          if (res.confirm) {
+            clearInterval(_page.countTimer)
+            wx.switchTab({
+              url: '../index/index'
+            })
+          }
+        }
+      })
     }
   },
   /**
@@ -152,6 +176,7 @@ Page({
    */
   onLoad: function (options) {
     const currentTask = JSON.parse(options.currentTask)
+    // const currentTask = { "_id": "XDRVIZT75u22ElqN", "_openid": "oKAnj5LZzicmkNJ85Z-ryaRAv9g8", "createTime": "2019-01-08T07:45:39.206Z", "cycle": "day", "duration": "1", "isComplete": false, "isEnable": true, "okNum": 0, "overTime": "1", "point": "5", "remark": "好好学习", "repeat": false, "taskName": "学习react", "type": "time" }
     this.drawProgressbg();
     this.countInterval(currentTask.duration)
     this.setData({

@@ -10,7 +10,6 @@
     "pages/authority/authority",
     "pages/help/help",
     "pages/timer/timer"
-    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

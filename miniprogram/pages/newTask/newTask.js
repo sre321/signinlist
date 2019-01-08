@@ -56,11 +56,6 @@ Page({
             setTimeout(function () {
               wx.switchTab({
                 url: '../index/index',
-                success: function (e) {
-                  var page = getCurrentPages().pop();
-                  if (page == undefined || page == null) return;
-                  page.onLoad();
-                }
               })
             }, 1500)
           }
@@ -80,11 +75,6 @@ Page({
             setTimeout(function () {
               wx.switchTab({
                 url: '../index/index',
-                success: function (e) {
-                  var page = getCurrentPages().pop();
-                  if (page == undefined || page == null) return;
-                  page.onLoad();
-                }
               })
             }, 1500)
           }
