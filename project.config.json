@@ -7,8 +7,8 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"uglifyFileName": true,
-		"autoAudits": true
+		"autoAudits": false,
+		"uglifyFileName": true
 	},
 	"appid": "wx8ec6570b294b6cda",
 	"projectname": "SignInList",

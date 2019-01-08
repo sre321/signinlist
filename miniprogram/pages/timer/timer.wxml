@@ -1,0 +1,20 @@
+<!--pages/timer/timer.wxml-->
+<view class="back">
+  <view class="tip">
+    <text decode="{{true}}">tip:1、计时完成后，需要点击结束按钮才会计算打卡结果。\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{currentTask.overTime>0?'2、计时完成后，每超过':''}}{{currentTask.overTime>0?currentTask.overTime:''}}{{currentTask.overTime>0?'分钟奖励1积分。':''}}</text>
+  </view>
+  <view class="tip"></view>
+  <view class='progress_box'>
+    <canvas class="progress_bg" canvas-id="canvasProgressbg"> </canvas>
+    <canvas class="progress_canvas" canvas-id="canvasProgress"> </canvas>
+    <view class="progress_text">
+      <view class="progress_dot {{isProgress?'process':'stop'}}"></view>
+      <text class='progress_info'> {{progress_txt}}</text>
+    </view>
+  </view>
+  <view class="overtime" wx:if="{{progress_txt=='计时完成'}}">已超出{{passTime}}分钟，奖励{{passPoint}}积分</view>
+  <view class="flex">
+    <button bindtap="switchTimer" class="btn" type="{{isProgress?'warn':'primary'}}" size="mini">{{isProgress?'暂停':'开始'}}</button>
+    <button bindtap="stopTimer" class="btn" type="warn" size="mini">结束</button>
+  </view>
+</view>

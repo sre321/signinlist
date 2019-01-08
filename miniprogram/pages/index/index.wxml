@@ -44,6 +44,7 @@
           <image src="/images/sign_btn_{{btn}}.png"></image>
         </view>
       </view>
+      <view class="tip">tip:如果是时长任务，点击打卡后则进入计时模式！</view>
     </block>
   </view>
   <!-- 无打卡任务 -->

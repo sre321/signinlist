@@ -60,7 +60,6 @@ Page({
       isEnable: com.eq(true)
     }])).get({
       success: function (res) {
-        console.log(res.data)
         if (res.data.length > 0) {
           _page.setData({
             tasks: res.data,
@@ -106,51 +105,65 @@ Page({
         'btn': 1,
         'btnPress': true
       })
-      wx.cloud.callFunction({
-        // 云函数名称
-        name: 'sign',
-        // 传给云函数的参数
-        data: {
-          taskId: _page.data.currentTask._id,
-          cycle: _page.data.currentTask.cycle,
-          point: parseInt(_page.data.currentTask.point)
-        },
-        success: function (res) {
-          if (res.result.code) {
-            wx.showToast({
-              title: '打卡成功',
-              icon: 'success',
-              duration: 1000
-            });
-            let newTasks = _page.data.tasks
-            let newCurrentTask = {}
-            for (var item in newTasks) {
-              if (newTasks[item]._id === _page.data.currentTask._id) {
-                if (newTasks[item].repeat)
-                  newTasks[item].okNum++
-                else {
-                  newTasks.splice(item, 1)
-                  newCurrentTask = newTasks.length > 0 ? newTasks[0] : {}
+      if (_page.data.currentTask.type =='once'){
+        wx.cloud.callFunction({
+          // 云函数名称
+          name: 'sign',
+          // 传给云函数的参数
+          data: {
+            taskId: _page.data.currentTask._id,
+            cycle: _page.data.currentTask.cycle,
+            point: parseInt(_page.data.currentTask.point)
+          },
+          success: function (res) {
+            if (res.result.code) {
+              wx.showToast({
+                title: '打卡成功',
+                icon: 'success',
+                duration: 1000
+              });
+              let newTasks = _page.data.tasks
+              let newCurrentTask = _page.data.currentTask
+              for (var item in newTasks) {
+                if (newTasks[item]._id === _page.data.currentTask._id) {
+                  if (newTasks[item].repeat){
+                    newTasks[item].okNum++
+                    _page.setData({
+                      btn: 0,
+                      btnPress: false,
+                      tasks: newTasks,
+                    })
+                  }
+                  else {
+                    newTasks.splice(item, 1)
+                    newCurrentTask = newTasks.length > 0 ? newTasks[0] : {}
+                    _page.setData({
+                      btn: 0,
+                      btnPress: false,
+                      tasks: newTasks,
+                      currentTask: newCurrentTask,
+                      index:0
+                    })
+                  }
                 }
               }
+            } else {
+              wx.showModal({
+                title: '提示',
+                content: '操作失败！' + res.result.msg,
+                showCancel: false
+              })
             }
-            _page.setData({
-              btn: 0,
-              btnPress: false,
-              tasks: newTasks,
-              currentTask: newCurrentTask
-            })
-
-          } else {
-            wx.showModal({
-              title: '提示',
-              content: '操作失败！' + res.result.msg,
-              showCancel: false
-            })
-          }
-        },
-        fail: console.error
-      })
+          },
+          fail: console.error
+        })
+        return
+      }
+      if (_page.data.currentTask.type == 'time') {
+        wx.redirectTo({
+          url: '../timer/timer?currentTask=' + JSON.stringify(_page.data.currentTask)
+        })
+      }
     }
   },
   // 上传图片

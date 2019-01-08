@@ -184,3 +184,7 @@
   margin: 0 16rpx;
   color: #2fcc85;
 }
+.tip{
+  margin-top: 50rpx;
+  color: #b2b2b2;
+}
