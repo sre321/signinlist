@@ -30,8 +30,10 @@ Page({
     // 设置渐变
     var gradient = context.createLinearGradient(200, 100, 100, 200);
     gradient.addColorStop("0", "#8ff566");
-    gradient.addColorStop("0.5", "#5dd94a");
-    gradient.addColorStop("1.0", "#2fcc85");
+    gradient.addColorStop("0.25", "#54ed68");
+    gradient.addColorStop("0.5", "#2fcc85");
+    gradient.addColorStop("0.75", "#69d0d3");
+    gradient.addColorStop("1", "#d8bb5a");
 
     context.setLineWidth(15);
     context.setStrokeStyle(gradient);

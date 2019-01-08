@@ -102,8 +102,8 @@ Page({
         duration: 1000
       })
       _page.setData({
-        'btn': 1,
-        'btnPress': true
+        btn: 1,
+        btnPress: true
       })
       if (_page.data.currentTask.type =='once'){
         wx.cloud.callFunction({
@@ -227,14 +227,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    clearInterval(this.interval)
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    clearInterval(this.interval)
   },
 
   /**

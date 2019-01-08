@@ -35,7 +35,6 @@ Page({
       cycle: cycle
     }).get({
       success: function(res) {
-        console.log(res.data)
         if (res.data.length > 0)
           _page.setData({
             tasks: res.data
