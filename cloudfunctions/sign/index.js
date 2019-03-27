@@ -6,40 +6,26 @@ cloud.init({
 const db = cloud.database()
 const com = db.command
 // 云函数入口函数
-exports.main = async (event, context) => {
+exports.main = async(event, context) => {
   try {
-    const { stats } = await db.collection('tasks').doc(event.taskId).update({
+    const {
+      stats
+    } = await db.collection('tasks').doc(event.taskId).update({
       data: {
         okNum: com.inc(1),
         isComplete: true
       }
     })
     if (stats.updated) {
-      let result = ''
-      switch (event.cycle) {
-        case 'day':
-          result = await db.collection('points').where({
-            _openid: event.userInfo.openId
-          })
-            .update({
-              data: {
-                day: com.inc(event.point)
-              },
-            })
-          break
-        case 'week':
-          result = await db.collection('points').where({
-            _openid: event.userInfo.openId
-          })
-            .update({
-              data: {
-                week: com.inc(event.point)
-              },
-            })
-          break
-        default:
-          break
-      }
+      const result = await db.collection('point').where({
+          _openid: event.userInfo.openId
+        })
+        .update({
+          data: {
+            point: com.inc(event.point)
+          },
+        })
+
       if (result.stats.updated) {
         return {
           code: 1,
@@ -54,7 +40,7 @@ exports.main = async (event, context) => {
         })
         return {
           code: 0,
-          msg: 'update points failed'
+          msg: 'update point failed'
         }
       }
     }

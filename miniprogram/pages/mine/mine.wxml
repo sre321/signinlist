@@ -14,13 +14,9 @@
 <view class="list">
   <view class="list_content">
     <view class="flex-bet">
-      <view bindtap="wallet" class="flex list_item">
-        <view class="text">{{points.day}}</view>
-        <view>日卡积分</view>
-      </view>
-      <view bindtap="wallet" class="flex list_item">
-        <view class="text">{{points.week}}</view>
-        <view>周卡积分</view>
+      <view class="flex list_item">
+        <view class="text">{{point}}</view>
+        <view>积分</view>
       </view>
     </view>
   </view>
@@ -37,6 +33,21 @@
     <view class="banner_list" bindtap="bigCircle">
       <image class="list_allimg" src="/images/circle.png"></image>
       <view class="list_alltext">大转盘</view>
+    </view>
+  </view>
+</view>
+<view class="banner">
+  <view class="bhead">
+    <view>积分商城</view>
+  </view>
+  <view class="bbody">
+    <view class="banner_list" bindtap="mall">
+      <image class="list_allimg" src="/images/mall.png"></image>
+      <view class="list_alltext">积分兑换</view>
+    </view>
+     <view class="banner_list" bindtap="setting">
+      <image class="list_allimg" src="/images/setting.png"></image>
+      <view class="list_alltext">商品设置</view>
     </view>
   </view>
 </view>
@@ -60,12 +71,12 @@
   </view>
 </view>
 <view class="wechat" wx:if="{{wechat}}">
-    <view bindtap="service" class="absolute"></view>
-    <view class="udlr absolute">
-        <image bindtap="previewImage" class="absolute" mode="aspectFill" src="/images/wechat.jpg"></image>
-        <view class="sele">点击图片预览</view>
-        <view class="queding">
-            <text bindtap="service">确定</text>
-        </view>
+  <view bindtap="service" class="absolute"></view>
+  <view class="udlr absolute">
+    <image bindtap="previewImage" class="absolute" mode="aspectFill" src="/images/wechat.jpg"></image>
+    <view class="sele">点击图片预览</view>
+    <view class="queding">
+      <text bindtap="service">确定</text>
     </view>
+  </view>
 </view>

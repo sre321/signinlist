@@ -9,7 +9,10 @@
     "pages/suggest/suggest",
     "pages/authority/authority",
     "pages/help/help",
-    "pages/timer/timer"
+    "pages/timer/timer",
+    "pages/mall/mall",
+    "pages/setting/setting",
+    "pages/commodity/commodity"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

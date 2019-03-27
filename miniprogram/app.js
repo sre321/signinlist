@@ -18,15 +18,14 @@ App({
         if (res.result.openId) {
           wx.setStorageSync('openId', res.result.openId)
           const db = wx.cloud.database()
-          db.collection('points').where({
+          db.collection('point').where({
             _openid: res.result.openId
           }).get({
-            success: function(res) {
+            success: function (res) {
               if (res.data.length == 0) {
-                db.collection('points').add({
+                db.collection('point').add({
                   data: {
-                    day: 0,
-                    week: 0
+                    point: 0
                   }
                 })
               }

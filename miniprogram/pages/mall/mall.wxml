@@ -1,0 +1,16 @@
+<!--pages/mall/mall.wxml-->
+<view class="content">
+  <view class="myPoint">
+    我的积分：{{myPoint}}
+  </view>
+  <view class="item" wx:for="{{commodities}}" wx:key="unique">
+    <image class="image" src="{{item.cover}}" mode="aspectFit" lazy-load="true"></image>
+    <text>{{item.name}}</text>
+    <view style="display:flex;">
+      <text class="params">积分:{{item.point}}</text>
+      <text class="params">数量:{{item.num}}</text>
+    </view>
+    <button class="exchange" bindtap="exchange" disabled="{{item.num<=0}}" data-item="{{item}}">兑换</button>
+  </view>
+  <view class="tip" wx:if="{{commodities.length<=0}}">暂时没有商品</view>
+</view>

@@ -1,0 +1,51 @@
+/* pages/mall/mall.wxss */
+
+/* pages/setting/setting.wxss */
+
+.content {
+  margin-top: 40rpx;
+  padding: 0 26rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  background: #fff;
+  height: 520rpx;
+  width: 46%;
+  text-align: center;
+  margin: 10rpx;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ededed;
+}
+
+.params {
+  color: #999;
+  margin-top: 10rpx;
+  width: 50%;
+}
+
+.exchange {
+  line-height: 60rpx;
+  background-color: #2fcc85;
+  color: #fff;
+  width: 50%;
+  margin-top: 15rpx;
+}
+
+.image {
+  height: 65%;
+  width: 100%;
+}
+
+.myPoint {
+  width: 100%;
+  margin: 0 0 20rpx 20rpx;
+}
+
+.tip {
+  text-align: center;
+  color: #676767;
+  width: 100%;
+}

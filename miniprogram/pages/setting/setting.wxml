@@ -1,0 +1,20 @@
+<!--pages/setting/setting.wxml-->
+<view class="create">
+  <button class="btn" bindtap="editCommodity">添加</button>
+</view>
+<view class="content">
+  <view class="item" wx:for="{{commodities}}" wx:key="unique">
+    <image class="image" src="{{item.cover}}" mode="aspectFit" lazy-load="true"></image>
+    <text>{{item.name}}</text>
+     <view style="display:flex;">
+      <text class="params">积分:{{item.point}}</text>
+      <text class="params">数量:{{item.num}}</text>
+    </view>
+    <view class="operate">
+      <text class="operateName" bindtap="editCommodity" data-id="{{item._id}}">编辑</text>
+      <text style='color:#ededed;'>|</text>
+      <text class="operateName" bindtap="deleteCommodity" data-item="{{item}}">删除</text>
+    </view>
+  </view>
+  <view class="tip" wx:if="{{commodities.length<=0}}">暂时没有商品，赶快去添加吧！</view>
+</view>

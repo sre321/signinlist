@@ -7,10 +7,7 @@ Page({
    */
   data: {
     wechat: false,
-    points: {
-      day: 0,
-      week: 0,
-    }
+    point: 0
   },
 
   /**
@@ -26,21 +23,23 @@ Page({
         }
       }
     })
-    this.userPoints()
+    this.userPoint()
   },
-  userPoints: function () {
+  userPoint: function () {
     let _page = this
     let openId = wx.getStorageSync('openId')
     if (!openId)
       app.getOpenId()
     openId = wx.getStorageSync('openId')
-    db.collection('points').where({
+    db.collection('point').where({
       _openid: openId
     }).get({
       success: function (res) {
-        _page.setData({
-          points: res.data[0]
-        })
+        if(res.data.length>0){
+          _page.setData({
+            point: res.data[0].point
+          })
+        }
       }
     })
   },
@@ -59,6 +58,16 @@ Page({
   help: function () {
     wx.navigateTo({
       url: '../help/help'
+    })
+  },
+  setting:function(){
+    wx.navigateTo({
+      url: '../setting/setting'
+    })
+  },
+  mall:function(){
+    wx.navigateTo({
+      url: '../mall/mall'
     })
   },
   service: function () {
@@ -92,7 +101,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.userPoints()
+    this.userPoint()
   },
 
   /**

@@ -6,17 +6,12 @@ cloud.init({
 const db = cloud.database()
 // 云函数入口函数
 exports.main = async(event, context) => {
-  try {
-    await db.collection('tasks').where({
-      cycle: 'day'
-    }).update({
-      data: {
-        isComplete: false,
-        okNum: 0
-      },
-    })
-  } catch {
-    console.error
-  }
-
+  await db.collection('tasks').where({
+    cycle: 'day'
+  }).update({
+    data: {
+      isComplete: false,
+      okNum: 0
+    },
+  })
 }

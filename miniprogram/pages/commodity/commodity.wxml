@@ -1,0 +1,27 @@
+<!-- 新建任务 -->
+<view class="add-page">
+  <form bindsubmit="formSubmit">
+    <view bindtap="chooseImgTap" class="image">
+      <image class="addImage" name="cover" src="{{imageUrl}}"></image>
+    </view>
+    <view class="mod-a">
+      <view class="mod t-name">
+        <input name="name" class="input" maxlength="100" placeholder="请输入商品名称" value="{{commodity.name}}" />
+      </view>
+    </view>
+    <view class="mod-a">
+      <view class="mod t-name">
+        <input name="point" class="input" type="number" maxlength="10" placeholder="请输入积分" value="{{commodity.point}}" />
+      </view>
+    </view>
+    <view class="mod-a">
+      <view class="mod t-name">
+        <input name="num" class="input" type="number" maxlength="10" placeholder="请输入库存数量" value="{{commodity.num}}" />
+      </view>
+    </view>
+    <!-- 创建按钮 -->
+    <view class="create">
+      <button class="btn" formType="submit">{{btnName}}</button>
+    </view>
+  </form>
+</view>

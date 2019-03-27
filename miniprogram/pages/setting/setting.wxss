@@ -1,0 +1,65 @@
+/* pages/setting/setting.wxss */
+
+.create {
+  margin-top: 30rpx;
+  padding: 0 26rpx;
+}
+
+.create .btn {
+  line-height: 80rpx;
+  background-color: #2fcc85;
+  color: #fff;
+}
+
+.create .disabled {
+  opacity: 0.4;
+}
+
+.content {
+  margin-top: 40rpx;
+  padding: 0 26rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  background: #fff;
+  height: 520rpx;
+  width: 46%;
+  text-align: center;
+  margin: 10rpx;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ededed;
+}
+
+.operate {
+  border-top: 1px solid #ededed;
+  background: #f9f9f9;
+  height: 68rpx;
+  margin-top: 20rpx;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.operateName {
+  width: 50%;
+}
+
+.params {
+  color: #999;
+  margin-top: 10rpx;
+  width: 50%;
+}
+
+.image {
+  height: 65%;
+  width: 100%;
+}
+
+.tip {
+  text-align: center;
+  color: #676767;
+  width: 100%;
+}

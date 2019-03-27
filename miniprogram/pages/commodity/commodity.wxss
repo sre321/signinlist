@@ -1,4 +1,4 @@
-/* pages/newTask/newTask.wxss */
+/* pages/commodity/commodity.wxss */
 
 .add-page {
   display: flex;
@@ -8,11 +8,22 @@
   padding: 30rpx 26rpx;
 }
 
+.addImage {
+  border: 1rpx solid #eee;
+  height: 230rpx;
+  width: 100%;
+}
+
+.image {
+  width: 230rpx;
+}
+
 .mod-a {
   padding: 1 20rpx;
   border: 1px solid #f0f0f0;
   background-color: #fff;
   border-radius: 12rpx;
+  margin-top: 10rpx;
 }
 
 .mod {
@@ -27,12 +38,7 @@
 .t-name .input {
   width: 100%;
   overflow: hidden;
-  color: #b2b2b2;
   font-size: 30rpx;
-}
-
-.mt5 {
-  margin-top: 5rpx;
 }
 
 .create {
@@ -44,23 +50,4 @@
   line-height: 80rpx;
   background-color: #2fcc85;
   color: #fff;
-}
-
-
-.create .disabled {
-  opacity: 0.4;
-}
-
-.area {
-  padding: 20rpx;
-  font-size: 30rpx;
-  height: 160rpx;
-}
-
-.point {
-  width: 130rpx;
-  background-color: #fff;
-  padding: 4rpx 20rpx;
-  border-radius: 12rpx;
-  text-align: center;
 }
