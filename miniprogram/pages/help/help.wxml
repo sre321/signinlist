@@ -1,7 +1,8 @@
 <!--pages/help/help.wxml-->
 <view class="help">
   <view class="helptxt">
-    <text>1、个人中心记录的是日卡和周卡的总积分。\n</text>
-    <text>1、积分商城的商品均为自己设置，自己提供，本软件不提供任何物质性奖励。\n</text>
+    <text>1、个人中心记录的积分是日卡和周卡的总积分。\n</text>
+    <text>2、积分商城的商品均为自己设置，自己提供，本软件不提供任何物质性奖励。\n</text>
+    <text>3、锻炼自律能力，你有多自律,就能走多远。\n</text>
   </view>
 </view>

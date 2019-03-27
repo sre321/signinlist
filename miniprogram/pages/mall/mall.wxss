@@ -11,7 +11,7 @@
 
 .item {
   background: #fff;
-  height: 520rpx;
+  height: 450rpx;
   width: 46%;
   text-align: center;
   margin: 10rpx;

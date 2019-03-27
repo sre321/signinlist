@@ -24,7 +24,7 @@
 
 .item {
   background: #fff;
-  height: 520rpx;
+  height: 430rpx;
   width: 46%;
   text-align: center;
   margin: 10rpx;
@@ -36,7 +36,7 @@
 .operate {
   border-top: 1px solid #ededed;
   background: #f9f9f9;
-  height: 68rpx;
+  height: 60rpx;
   margin-top: 20rpx;
   display: flex;
   text-align: center;
