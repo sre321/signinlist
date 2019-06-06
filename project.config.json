@@ -12,7 +12,7 @@
 	},
 	"appid": "wx8ec6570b294b6cda",
 	"projectname": "signinlist",
-	"libVersion": "2.6.2",
+	"libVersion": "2.6.4",
 	"compileType": "miniprogram",
 	"condition": {
 		"search": {
